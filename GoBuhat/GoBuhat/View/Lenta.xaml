@@ -19,7 +19,7 @@
             <ScrollView>
 
                 <StackLayout
-                    BackgroundColor="DarkBlue"
+                    BackgroundColor="LightGray"
                     x:Name="eventsLayout">
 
                 </StackLayout>

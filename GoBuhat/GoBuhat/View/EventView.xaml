@@ -28,27 +28,33 @@
                     WidthRequest="50" 
                     HeightRequest="50" />
 
-                        <StackLayout
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="Fill"
-                            Margin="10, 0, 0, 0"
-                        Orientation="Vertical" >
+                        <Grid
+                            Margin="10, 0, 0, 0">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition 
+                                    Height="*" />
+                                <RowDefinition 
+                                    Height="*" />
+                            </Grid.RowDefinitions>
 
                             <Label 
-                            x:Name="username_master_lbl"
-                            Text="{Binding EventAuthorId}"
-                            HorizontalOptions="FillAndExpand"
-                            HorizontalTextAlignment="Center"
-                            VerticalTextAlignment="Center"
-                            TextColor="Black" 
-                            FontSize="Medium" 
-                            />
+                                Grid.Row="0"
+                                x:Name="username_master_lbl"
+                                Text="{Binding EventAuthorId}"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="End"
+                                TextColor="Black" 
+                                FontSize="Medium" />
 
                             <Label 
-                            Text="{Binding EventID}"
-                            FontAttributes="Bold"/>
+                                Grid.Row="1"
+                                Text="{Binding EventID, StringFormat='Event ID: {0:N}'}"
+                                VerticalTextAlignment="Start"
+                                FontAttributes="Bold" />
 
-                        </StackLayout>
+                        </Grid>
 
                     </StackLayout>
 
@@ -67,6 +73,8 @@
             </StackLayout>
 
             <Grid
+                HeightRequest="30"
+                Padding="10"
                 VerticalOptions="Center" >
 
                 <Grid.ColumnDefinitions>
@@ -76,28 +84,31 @@
                         Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <ImageButton 
-                    Aspect="AspectFit"
-                    HeightRequest="20"
+                <Image 
                     Source="not_liked.png"
                     Grid.Column="0"
-                    x:Name="btn_join"
-                    Clicked="Btn_join_Clicked"
-                    HorizontalOptions="Fill"
-                    VerticalOptions="Center"
-                    BackgroundColor="Transparent"
-                    />
+                    x:Name="btn_join">
 
-                <ImageButton 
-                    HeightRequest="20"
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="Btn_join_Clicked"
+                            NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                    
+                </Image>
+
+                <Image 
                     Source="people.png"
                     Grid.Column="1"
-                    x:Name="btn_showAll"
-                    Clicked="Btn_showAll_Clicked"
-                    HorizontalOptions="Fill"
-                    VerticalOptions="Center"
-                    BackgroundColor="Transparent"
-                    />
+                    x:Name="btn_showAll">
+
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="Btn_showAll_Clicked"
+                            NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+
+                </Image>
 
             </Grid>
 
