@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             x:Class="GoBuhat.PopUp.AddEventPopUp">
+
+    <StackLayout
+        Margin="5"
+        Padding="24"
+        Spacing="24"
+        BackgroundColor="White"
+        HorizontalOptions="Fill"
+        VerticalOptions="Center">
+
+        <StackLayout>
+            <Label Text="Event Name" />
+            <Editor
+                Text="{Binding EventName}"
+                FontSize="30" />
+        </StackLayout>
+
+        <StackLayout
+            Margin="0, 10, 0, 0">
+            <Label Text="Event Text" />
+            <Editor
+                MinimumHeightRequest="60"
+                Text="{Binding EventText}"
+                FontSize="30" />
+        </StackLayout>
+
+        <Button 
+            Command="{Binding SubmitCommand}"
+            BackgroundColor="DodgerBlue"
+            Text="Add Event"
+            TextColor="White"
+            x:Name="btn_addEvent"
+            Clicked="btn_addEvent_Clicked"
+            Margin="0, 10, 0, 0" />
+
+    </StackLayout>
+    
+</pages:PopupPage>

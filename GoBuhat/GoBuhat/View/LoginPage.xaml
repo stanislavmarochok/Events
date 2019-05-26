@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GoBuhat.Pages.LoginPage"
+             BackgroundColor="Aqua">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Vertical" Padding="30" Spacing="40">
+
+                <Label 
+                    Text="LOGIN"  
+                    TextColor="Black"
+                    FontSize="40"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Margin="0, 20, 0, 0"
+                    />
+                
+                <BoxView HeightRequest="10"/>
+                
+                <!--<Image HorizontalOptions="Center" WidthRequest="300" Source="maco.jpg"/>-->
+                
+                <Frame BackgroundColor="AliceBlue" HasShadow="True">
+                    <StackLayout Orientation="Vertical" Spacing="10">
+
+                        <Entry x:Name="UserName" Text="{Binding UserName}" Placeholder="UserName"   
+                           PlaceholderColor="Gray" HeightRequest="50" 
+                           TextColor="Black"/>
+                        
+                        <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password"   
+                           PlaceholderColor="Gray" HeightRequest="50"   
+                           IsPassword="True"  
+                           TextColor="Black"/>
+
+                        <!--<StackLayout Orientation="Horizontal">
+
+                            <Label 
+                                Text="Save Me:"   
+                                TextColor="Black"
+                                FontSize="20"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="Center" />
+
+                            <Switch 
+                                Scale="0.7" 
+                                HorizontalOptions="End"
+                                VerticalOptions="Start"
+                                IsToggled="{Binding IsSaveSwitchToggled}"
+                                x:Name="sw_save"
+                                />
+
+                        </StackLayout>-->
+                    </StackLayout>
+                </Frame>
+                
+                <Button 
+                    Command="{Binding SubmitCommand}" 
+                    Text="Login" 
+                    TextColor="White"  
+                    FontAttributes="Bold" 
+                    FontSize="Large" 
+                    HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="#088da5" />
+
+                <Button 
+                    x:Name="reg_btn"
+                    Clicked="Reg_btn_Clicked"
+                    Text="Register" 
+                    TextColor="White"  
+                    FontAttributes="Bold" 
+                    FontSize="Large" 
+                    HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="BlueViolet" />
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

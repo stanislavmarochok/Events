@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GoBuhat.Lenta"
+             Title="Lenta">
+    <ContentPage.Content>
+
+        <StackLayout
+            BackgroundColor="White" >
+
+            <Button 
+                Text="Add Event"
+                HorizontalOptions="Fill"
+                VerticalOptions="Start"
+                x:Name="add_event_btn"
+                Clicked="Add_event_btn_Clicked"
+                />
+
+            <ScrollView>
+
+                <StackLayout
+                    BackgroundColor="DarkBlue"
+                    x:Name="eventsLayout">
+
+                </StackLayout>
+
+            </ScrollView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

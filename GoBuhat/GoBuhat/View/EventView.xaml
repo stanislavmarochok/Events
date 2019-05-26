@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvvm="clr-namespace:GoBuhat.Controls"
+             x:Class="GoBuhat.Controls.EventView">
+    <ContentView.Content>
+
+        <StackLayout 
+            BackgroundColor="White" 
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="CenterAndExpand" 
+            Margin="0, 0, 0, 1" >
+
+            <StackLayout
+                Padding="10">
+
+                <Grid
+                HorizontalOptions="FillAndExpand" >
+
+                    <StackLayout
+                    HorizontalOptions="Fill"
+                    Orientation="Horizontal">
+
+                        <Image 
+                    Source="profile.png" 
+                    Aspect="AspectFill" 
+                    Margin="20, 10, 0, 10"
+                    WidthRequest="50" 
+                    HeightRequest="50" />
+
+                        <StackLayout
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="Fill"
+                            Margin="10, 0, 0, 0"
+                        Orientation="Vertical" >
+
+                            <Label 
+                            x:Name="username_master_lbl"
+                            Text="{Binding EventAuthorId}"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            TextColor="Black" 
+                            FontSize="Medium" 
+                            />
+
+                            <Label 
+                            Text="{Binding EventID}"
+                            FontAttributes="Bold"/>
+
+                        </StackLayout>
+
+                    </StackLayout>
+
+                </Grid>
+
+                <Label 
+                    Margin="10, 0, 0, 0"
+                    Text="{Binding EventName}"
+                    FontSize="Large"
+                    FontAttributes="Bold"/>
+
+                <Label 
+                    Margin="10, 10, 0, 0"
+                    Text="{Binding EventText}"
+                    FontSize="Medium"/>
+            </StackLayout>
+
+            <Grid
+                VerticalOptions="Center" >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <ImageButton 
+                    Aspect="AspectFit"
+                    HeightRequest="20"
+                    Source="not_liked.png"
+                    Grid.Column="0"
+                    x:Name="btn_join"
+                    Clicked="Btn_join_Clicked"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Center"
+                    BackgroundColor="Transparent"
+                    />
+
+                <ImageButton 
+                    HeightRequest="20"
+                    Source="people.png"
+                    Grid.Column="1"
+                    x:Name="btn_showAll"
+                    Clicked="Btn_showAll_Clicked"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Center"
+                    BackgroundColor="Transparent"
+                    />
+
+            </Grid>
+
+        </StackLayout>
+        
+    </ContentView.Content>
+</ContentView>

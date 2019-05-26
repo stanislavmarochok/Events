@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GoBuhat.Pages.Me">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <ScrollView>
+                
+                <StackLayout
+                    x:Name="eventsLayout">
+
+                    <Label 
+                        Text="{Binding UserName}"
+                        TextColor="Black"
+                        BackgroundColor="AliceBlue"
+                        FontSize="Large" />
+
+                </StackLayout>
+
+            </ScrollView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

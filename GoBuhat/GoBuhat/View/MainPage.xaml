@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GoBuhat"
+             x:Class="GoBuhat.MainPage">
+
+    <MasterDetailPage.Master>
+
+        <ContentPage Title="Menu">
+            <Grid BackgroundColor="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid BackgroundColor="Aqua">
+                    <Image 
+                        Source="cat.png" 
+                        Aspect="AspectFill" />
+
+                    <!--<StackLayout
+                        HorizontalOptions="FillAndExpand" 
+                        VerticalOptions="Start">
+
+                        <Label 
+                            Font="SHOWG"
+                            Text="EVENTS"
+                            />
+
+                    </StackLayout>-->
+
+                    <Grid 
+                        HorizontalOptions="FillAndExpand" 
+                        VerticalOptions="End">
+
+                        <ContentView 
+                            BackgroundColor="DarkBlue" 
+                            Opacity="0.7" 
+                            VerticalOptions="FillAndExpand" />
+
+                        <StackLayout
+                            Orientation="Horizontal">
+                        
+                            <Image 
+                                Source="profile.png" 
+                                Aspect="AspectFill" 
+                                Margin="20, 10, 0, 10"
+                                WidthRequest="65" 
+                                HeightRequest="65" />
+
+                            <Label 
+                                x:Name="username_master_lbl"
+                                Text="Xam Buddy" 
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                TextColor="White" 
+                                FontSize="Large" />
+                        </StackLayout>
+
+                    </Grid>
+                </Grid>
+                <Grid
+                    Grid.Row="1">
+
+                    <ContentView 
+                        BackgroundColor="DarkBlue" 
+                        Opacity="0.7" 
+                        VerticalOptions="FillAndExpand" />
+                    
+                    <ListView 
+                        x:Name="navigationDrawerList"
+                        RowHeight="60"
+                        SeparatorVisibility="None"
+                        ItemSelected="OnMenuItemSelected">
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+
+                                    <!--<Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="1" />
+                                        </Grid.RowDefinitions>-->
+
+                                        <!-- Main design for our menu items -->
+                                        <StackLayout 
+                                            Grid.Row="0"
+                                            VerticalOptions="FillAndExpand"
+                                            BackgroundColor="White"
+                                            Orientation="Horizontal"
+                                            Margin="0, 0, 0, 10"
+                                            Padding="20,10,0,10"
+                                            Spacing="20">
+
+                                            <Image 
+                                                Source="{Binding Icon}"
+                                                WidthRequest="40"
+                                                HeightRequest="40"
+                                                VerticalOptions="Center" />
+
+                                            <Label 
+                                                Text="{Binding Title}"
+                                                FontSize="Medium"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment="Center"
+                                                HorizontalOptions="FillAndExpand"
+                                                TextColor="Black"/>
+                                        </StackLayout>
+
+                                        <!--<BoxView    
+                                            WidthRequest="70"
+                                            Grid.Row="1"
+                                            BackgroundColor="#999" 
+                                            HeightRequest="1" />-->
+                                    <!--</Grid>-->
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+
+                <Button 
+                    Text="Log OUT"
+                    x:Name="log_out_btn"
+                    Clicked="log_out_btn_Clicked"
+                    VerticalOptions="EndAndExpand"
+                    />
+
+                </Grid>
+                
+            </Grid>
+        </ContentPage>
+
+    </MasterDetailPage.Master>
+    
+    
+
+    <MasterDetailPage.Detail>
+
+        <ContentPage Padding="10">
+            <ContentPage.Content>
+                <StackLayout Margin="5, 30, 5, 5">
+                    <Label Text="Detail Page">
+                    </Label>
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+        
+    </MasterDetailPage.Detail>
+
+</MasterDetailPage>

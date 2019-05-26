@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GoBuhat.Pages.RegistrationPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Vertical" Padding="30" Spacing="40">
+
+                <Label 
+                    Text="REGISTRATION"
+                    FontSize="40"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Margin="0, 20, 0, 0"
+                    />
+
+                <BoxView HeightRequest="10"/>
+
+                <!--<Image HorizontalOptions="Center" WidthRequest="300" Source="maco.jpg"/>-->
+
+                <Frame BackgroundColor="Transparent" HasShadow="True">
+                    <StackLayout Orientation="Vertical" Spacing="10">
+
+                        <Entry x:Name="UserName" Text="{Binding UserName}" Placeholder="UserName"   
+                           PlaceholderColor="Gray" HeightRequest="50"  
+                           TextColor="Black"/>
+
+                        <Entry x:Name="Email" Text="{Binding Email}" Placeholder="Email"   
+                           PlaceholderColor="Gray" HeightRequest="50"
+                           Keyboard="Email"
+                           TextColor="Black"/>
+
+                        <Label 
+                            x:Name="pass_st_lbl"
+                            Text="Password strong: Blank"
+                            TextColor="Black" />
+
+                        <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password"   
+                           PlaceholderColor="Gray" HeightRequest="50"   
+                           IsPassword="True"  
+                           TextColor="Black"
+                           TextChanged="Password_TextChanged" />
+
+                        <Entry x:Name="ConfirmPassword" Text="{Binding Password}" Placeholder="Confirm Password"   
+                           PlaceholderColor="Gray" HeightRequest="50"   
+                           IsPassword="True"  
+                           TextColor="Black" />
+
+                    </StackLayout>
+                </Frame>
+
+                <Button Command="{Binding SubmitCommand}" Text="SIGN UP" TextColor="White"  
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="#088da5" />
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
