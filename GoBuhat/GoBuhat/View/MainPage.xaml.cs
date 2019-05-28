@@ -31,7 +31,7 @@ namespace GoBuhat
             menuList = new List<MasterPageItem>();
 
             // Adding menu items to menuList and you can define title ,page and icon
-            menuList.Add(new MasterPageItem() { Title = "My Page", Icon = "mypage.png", TargetType = typeof(Me) });
+            menuList.Add(new MasterPageItem() { Title = "My Page", Icon = "mypage.png", TargetType = typeof(Profile) });
             menuList.Add(new MasterPageItem() { Title = "All Events", Icon = "allevents.png", TargetType = typeof(Lenta) });
 
             // Setting our list to be ItemSource for ListView in MainPage.xaml
@@ -54,7 +54,7 @@ namespace GoBuhat
             }else
             {
                 if (page.Name.Equals("Me"))
-                    Detail = new NavigationPage(new Me(Username, Id));
+                    Detail = new NavigationPage(new Profile(Username, Id));
                 else
                     Detail = new NavigationPage((Page)Activator.CreateInstance(page));
             }

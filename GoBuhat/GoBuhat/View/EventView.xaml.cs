@@ -1,4 +1,5 @@
 ﻿using GoBuhat.Common;
+using GoBuhat.Pages;
 using GoBuhat.Utils;
 using System;
 using System.Collections.Generic;
@@ -74,12 +75,24 @@ namespace GoBuhat.Controls
                 eventText = value;
             }
         }
+        private string eventAuthorName;
+        public string EventAuthorName
+        {
+            get
+            {
+                return eventAuthorName;
+            }
+            set
+            {
+                eventAuthorName = value;
+            }
+        }
         private string eventAuthorId;
         public string EventAuthorId
         {
             get
             {
-                return "Author ID: " + eventAuthorId;
+                return eventAuthorId;
             }
             set
             {
@@ -101,10 +114,11 @@ namespace GoBuhat.Controls
         //    BindingContext = this;
         //}
 
-        public EventView (string author_id, string id, string name, string text, string join_status)
+        public EventView (string author_name, string author_id, string id, string name, string text, string join_status)
 		{
 			InitializeComponent ();
 
+            EventAuthorName = author_name;
             EventAuthorId = author_id;
             EventID = id;
             EventName = name;
@@ -178,6 +192,13 @@ namespace GoBuhat.Controls
         private void Btn_showAll_Clicked(object sender, EventArgs e)
         {
 
+        }
+
+        private async void OnEventHeaderTapped(object sender, EventArgs e)
+        {
+            //Application.Current.MainPage = new NavigationPage(new Profile("TEST_NAME", EventAuthorId));
+
+            await Navigation.PushAsync(new Profile("TEST_NAME", EventAuthorId));
         }
     }
 }

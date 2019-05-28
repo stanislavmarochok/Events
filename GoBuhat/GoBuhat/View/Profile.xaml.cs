@@ -16,7 +16,7 @@ using Xamarin.Forms.Xaml;
 namespace GoBuhat.Pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Me : ContentPage
+	public partial class Profile : ContentPage
     {
         List<EventView> eventList;
         private byte[] result;
@@ -24,7 +24,7 @@ namespace GoBuhat.Pages
         public string UserName { get; set; }
         public string UserId { get; set; }
         
-        public Me(string name, string id)
+        public Profile(string name, string id)
         {
             InitializeComponent();
 
@@ -95,7 +95,7 @@ namespace GoBuhat.Pages
                 name = name.Remove(0, 12);
                 text = text.Remove(0, 12);
 
-                eventList.Add(new EventView(authorId, id, name, text, "true"));
+                eventList.Add(new EventView("STEVE", authorId, id, name, text, "true"));
 
                 content = content.Remove(0, newLine + 1);
             }

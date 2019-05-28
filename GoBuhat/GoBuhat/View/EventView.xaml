@@ -15,20 +15,27 @@
                 Padding="10"> 
 
                 <Grid
-                HorizontalOptions="FillAndExpand" >
+                    HorizontalOptions="FillAndExpand" >
 
                     <StackLayout
-                    HorizontalOptions="Fill"
-                    Orientation="Horizontal">
+                        HorizontalOptions="Fill"
+                        Orientation="Horizontal">
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="OnEventHeaderTapped"
+                                NumberOfTapsRequired="1" />
+                        </StackLayout.GestureRecognizers>
 
                         <Image 
-                    Source="profile.png" 
-                    Aspect="AspectFill" 
-                    Margin="20, 10, 0, 10"
-                    WidthRequest="50" 
-                    HeightRequest="50" />
+                            Source="profile.png" 
+                            Aspect="AspectFill" 
+                            Margin="20, 10, 0, 10"
+                            WidthRequest="50" 
+                            HeightRequest="50" />
 
                         <Grid
+                            HeightRequest="50"
                             Margin="10, 0, 0, 0">
 
                             <Grid.RowDefinitions>
@@ -36,14 +43,16 @@
                                     Height="*" />
                                 <RowDefinition 
                                     Height="*" />
+                                <!--<RowDefinition 
+                                    Height="*" />-->
                             </Grid.RowDefinitions>
 
                             <Label 
                                 Grid.Row="0"
                                 x:Name="username_master_lbl"
-                                Text="{Binding EventAuthorId}"
+                                Text="{Binding EventAuthorName}"
                                 HorizontalOptions="FillAndExpand"
-                                HorizontalTextAlignment="Center"
+                                HorizontalTextAlignment="Start"
                                 VerticalTextAlignment="End"
                                 TextColor="Black" 
                                 FontSize="Medium" />
@@ -53,6 +62,12 @@
                                 Text="{Binding EventID, StringFormat='Event ID: {0:N}'}"
                                 VerticalTextAlignment="Start"
                                 FontAttributes="Bold" />
+
+                            <!--<Label 
+                                Grid.Row="2"
+                                Text="{Binding EventAuthorId, StringFormat='Event Author Id: {0:N}'}"
+                                VerticalTextAlignment="Start"
+                                FontAttributes="Bold" />-->
 
                         </Grid>
 

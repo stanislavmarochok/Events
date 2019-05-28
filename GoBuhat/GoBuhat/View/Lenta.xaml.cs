@@ -73,13 +73,16 @@ namespace GoBuhat
                 while (!string.IsNullOrEmpty(content))
                 {
                     int newLine = content.IndexOf('\n');
-                    string name, text, id, authorId, join_status;
+                    string name, text, id, author_name, authorId, join_status;
 
                     //Console.WriteLine("\n\nTEST:  ------>  " + content.Substring(0, newLine) + '\n');
 
                     string line = content.Substring(0, newLine);
 
-                    join_status = line.Substring(0, line.IndexOf(", Event Author ID:"));
+                    join_status = line.Substring(0, line.IndexOf(", Event Author Username:"));
+                    line = line.Remove(0, line.IndexOf(", Event Author Username:") + 2);
+
+                    author_name = line.Substring(0, line.IndexOf(", Event Author ID:"));
                     line = line.Remove(0, line.IndexOf(", Event Author ID:") + 2);
 
                     authorId = line.Substring(0, line.IndexOf(", Event ID:"));
@@ -93,13 +96,14 @@ namespace GoBuhat
 
                     text = line;
 
+                    author_name = author_name.Remove(0, 23);
                     authorId = authorId.Remove(0, 17);
                     id = id.Remove(0, 10);
                     name = name.Remove(0, 12);
                     text = text.Remove(0, 12);
                     join_status = join_status.Remove(0, 13);
 
-                    eventList.Add(new EventView(authorId, id, name, text, join_status));
+                    eventList.Add(new EventView(author_name, authorId, id, name, text, join_status));
 
                     content = content.Remove(0, newLine + 1);
                 }
