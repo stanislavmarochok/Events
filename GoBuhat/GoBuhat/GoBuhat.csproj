@@ -21,11 +21,14 @@
     <Compile Update="MasterDetailPageMenuItem.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\LentaView.xaml.cs">
+      <DependentUpon>LentaView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="View\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Profile.xaml.cs">
-      <DependentUpon>Profile.xaml</DependentUpon>
+    <Compile Update="View\ProfileView.xaml.cs">
+      <DependentUpon>ProfileView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -36,7 +39,7 @@
     <EmbeddedResource Update="PopUp\AddEventPopUp.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Lenta.xaml">
+    <EmbeddedResource Update="View\LentaView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="MasterDetailPage1.xaml">
@@ -51,7 +54,7 @@
     <EmbeddedResource Update="View\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Profile.xaml">
+    <EmbeddedResource Update="View\ProfileView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Messages.xaml">

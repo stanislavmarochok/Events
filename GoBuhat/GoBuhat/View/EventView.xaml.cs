@@ -36,7 +36,6 @@ namespace GoBuhat.Controls
                 btn_join.Source = (joinStatus) ? "liked.png" : "not_liked.png";
             }
         }
-
         private string eventID;
         public string EventID
         {
@@ -99,22 +98,40 @@ namespace GoBuhat.Controls
                 eventAuthorId = value;
             }
         }
+        private string eventDatetime;
+        public string EventDatetime
+        {
+            get
+            {
+                return eventDatetime;
+            }
+            set
+            {
+                eventDatetime = value;
+            }
+        }
+        private string eventPublishDatetime;
+        public string EventPublishDatetime
+        {
+            get
+            {
+                return eventPublishDatetime;
+            }
+            set
+            {
+                eventPublishDatetime = value;
+            }
+        }
 
-        //public EventView(string author_id, string id, string name, string text)
-        //{
-        //    InitializeComponent();
-
-        //    EventAuthorId = author_id;
-        //    EventID = id;
-        //    EventName = name;
-        //    EventText = text;
-
-        //    ChangeJoinStatus();
-
-        //    BindingContext = this;
-        //}
-
-        public EventView (string author_name, string author_id, string id, string name, string text, string join_status)
+        public EventView (
+            string author_name, 
+            string author_id, 
+            string id, 
+            string name, 
+            string text, 
+            string join_status,
+            string datetime,
+            string publish_datetime )
 		{
 			InitializeComponent ();
 
@@ -123,6 +140,8 @@ namespace GoBuhat.Controls
             EventID = id;
             EventName = name;
             EventText = text;
+            EventDatetime = datetime;
+            EventPublishDatetime = publish_datetime;
 
             JoinStatus = (join_status.Equals("true")) ? true : false;
 
@@ -198,7 +217,7 @@ namespace GoBuhat.Controls
         {
             //Application.Current.MainPage = new NavigationPage(new Profile("TEST_NAME", EventAuthorId));
 
-            await Navigation.PushAsync(new Profile("TEST_NAME", EventAuthorId));
+            await Navigation.PushAsync(new ProfileView(EventAuthorName, EventAuthorId));
         }
     }
 }

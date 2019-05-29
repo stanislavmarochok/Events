@@ -59,7 +59,7 @@
 
                             <Label 
                                 Grid.Row="1"
-                                Text="{Binding EventID, StringFormat='Event ID: {0:N}'}"
+                                Text="{Binding EventPublishDatetime}"
                                 VerticalTextAlignment="Start"
                                 FontAttributes="Bold" />
 
@@ -85,6 +85,17 @@
                     Margin="10, 10, 0, 0"
                     Text="{Binding EventText}"
                     FontSize="Medium"/>
+
+                <Label 
+                    Margin="10, 10, 0, 0"
+                    Text="{Binding EventID, StringFormat='Event ID: {0:N}'}"
+                    FontSize="Medium"/>
+
+                <Label 
+                    Margin="10, 10, 0, 0"
+                    Text="{Binding EventDatetime, StringFormat='Event DateTime: {0:N}'}"
+                    FontSize="Medium"/>
+                
             </StackLayout>
 
             <Grid

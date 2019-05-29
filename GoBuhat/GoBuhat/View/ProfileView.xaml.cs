@@ -16,7 +16,7 @@ using Xamarin.Forms.Xaml;
 namespace GoBuhat.Pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Profile : ContentPage
+	public partial class ProfileView : ContentPage
     {
         List<EventView> eventList;
         private byte[] result;
@@ -24,7 +24,7 @@ namespace GoBuhat.Pages
         public string UserName { get; set; }
         public string UserId { get; set; }
         
-        public Profile(string name, string id)
+        public ProfileView(string name, string id)
         {
             InitializeComponent();
 
@@ -55,6 +55,7 @@ namespace GoBuhat.Pages
             NameValueCollection parameters = new NameValueCollection();
 
             parameters.Add("event_author_id", UserId);
+            parameters.Add("user_id", UserId);
 
             string content = "";
 
@@ -70,14 +71,21 @@ namespace GoBuhat.Pages
             while (!string.IsNullOrEmpty(content))
             {
                 int newLine = content.IndexOf('\n');
-                string name, text, id, authorId, join_status;
-
-                //Console.WriteLine("\n\nTEST:  ------>  " + content.Substring(0, newLine) + '\n');
+                string name, text, id, author_name, authorId, join_status, datetime, publish_datetime;
 
                 string line = content.Substring(0, newLine);
 
-                //join_status = line.Substring(0, line.IndexOf(", Event Author ID:"));
-                //line = line.Remove(0, line.IndexOf(", Event Author ID:") + 2);
+                publish_datetime = line.Substring(0, line.IndexOf(", Event datetime:"));
+                line = line.Remove(0, line.IndexOf(", Event datetime:") + 2);
+
+                datetime = line.Substring(0, line.IndexOf(", Join Status:"));
+                line = line.Remove(0, line.IndexOf(", Join Status:") + 2);
+
+                join_status = line.Substring(0, line.IndexOf(", Event Author Username:"));
+                line = line.Remove(0, line.IndexOf(", Event Author Username:") + 2);
+
+                author_name = line.Substring(0, line.IndexOf(", Event Author ID:"));
+                line = line.Remove(0, line.IndexOf(", Event Author ID:") + 2);
 
                 authorId = line.Substring(0, line.IndexOf(", Event ID:"));
                 line = line.Remove(0, line.IndexOf(", Event ID:") + 2);
@@ -90,17 +98,19 @@ namespace GoBuhat.Pages
 
                 text = line;
 
+                author_name = author_name.Remove(0, 23);
                 authorId = authorId.Remove(0, 17);
                 id = id.Remove(0, 10);
                 name = name.Remove(0, 12);
                 text = text.Remove(0, 12);
+                join_status = join_status.Remove(0, 13);
+                publish_datetime = publish_datetime.Remove(0, 24);
+                datetime = datetime.Remove(0, 16);
 
-                eventList.Add(new EventView("STEVE", authorId, id, name, text, "true"));
+                eventList.Add(new EventView(author_name, authorId, id, name, text, join_status, datetime, publish_datetime));
 
                 content = content.Remove(0, newLine + 1);
             }
-
-            eventList.Reverse();
 
             Device.BeginInvokeOnMainThread(() =>
             {

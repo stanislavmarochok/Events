@@ -31,14 +31,14 @@ namespace GoBuhat
             menuList = new List<MasterPageItem>();
 
             // Adding menu items to menuList and you can define title ,page and icon
-            menuList.Add(new MasterPageItem() { Title = "My Page", Icon = "mypage.png", TargetType = typeof(Profile) });
-            menuList.Add(new MasterPageItem() { Title = "All Events", Icon = "allevents.png", TargetType = typeof(Lenta) });
+            menuList.Add(new MasterPageItem() { Title = "My Page", Icon = "mypage.png", TargetType = typeof(ProfileView) });
+            menuList.Add(new MasterPageItem() { Title = "All Events", Icon = "allevents.png", TargetType = typeof(LentaView) });
 
             // Setting our list to be ItemSource for ListView in MainPage.xaml
             navigationDrawerList.ItemsSource = menuList;
 
             // Initial navigation, this can be used for our home page
-            Detail = new NavigationPage(new Lenta(Username, Id));
+            Detail = new NavigationPage(new LentaView(Username, Id));
 
             username_master_lbl.Text = Username + "\n" + "id: " + Id;
         }
@@ -48,13 +48,13 @@ namespace GoBuhat
             var item = (MasterPageItem)e.SelectedItem;
             Type page = item.TargetType;
 
-            if (page.Name.Equals("Lenta"))
+            if (page.Name.Equals("LentaView"))
             {
-                Detail = new NavigationPage(new Lenta(Username, Id));
+                Detail = new NavigationPage(new LentaView(Username, Id));
             }else
             {
-                if (page.Name.Equals("Me"))
-                    Detail = new NavigationPage(new Profile(Username, Id));
+                if (page.Name.Equals("ProfileView"))
+                    Detail = new NavigationPage(new ProfileView(Username, Id));
                 else
                     Detail = new NavigationPage((Page)Activator.CreateInstance(page));
             }

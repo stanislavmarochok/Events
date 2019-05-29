@@ -15,6 +15,10 @@ namespace GoBuhat.ViewModel
 
         byte[] result;
 
+        public DateTime EventDate { get; set; }
+        public TimeSpan EventTime { get; set; }
+        public string EventDateTime { get; set; }
+        public string EventPublishDateTime { get; set; }
         public string EventName { get; set; }
         public string EventText { get; set; }
         public string EventAuthorId { get; set; }
@@ -32,8 +36,22 @@ namespace GoBuhat.ViewModel
             if (!CheckInput())
                 return;
 
+            SetDates();
+
             SendNewEventToPHP();
 
+        }
+
+        private void SetDates()
+        {
+            int year = EventDate.Year;
+            int month = EventDate.Month;
+            int day = EventDate.Day;
+            string date = year.ToString() + "-" + month.ToString() + "-" + day.ToString() + " " + EventTime;
+            EventDateTime = date;
+
+            EventPublishDateTime = DateTime.Now.ToString("yyyy-MM-dd hh:ss:mm");
+            Console.WriteLine("Date ------> " + EventPublishDateTime);
         }
 
         private bool CheckInput()
@@ -53,6 +71,8 @@ namespace GoBuhat.ViewModel
 
             NameValueCollection parameters = new NameValueCollection();
 
+            parameters.Add("event_publish_datetime", EventPublishDateTime);
+            parameters.Add("event_datetime", EventDateTime);
             parameters.Add("event_name", EventName);
             parameters.Add("event_author_id", EventAuthorId);
             parameters.Add("event", EventText);
