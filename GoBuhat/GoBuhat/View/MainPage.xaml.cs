@@ -1,4 +1,5 @@
-﻿using GoBuhat.Pages;
+﻿using GoBuhat.Interfaces;
+using GoBuhat.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,8 @@ namespace GoBuhat
             menuList.Add(new MasterPageItem() { Title = "My Page", Icon = "mypage.png", TargetType = typeof(ProfileView) });
             menuList.Add(new MasterPageItem() { Title = "All Events", Icon = "allevents.png", TargetType = typeof(LentaView) });
 
+            //AddCategories();
+
             // Setting our list to be ItemSource for ListView in MainPage.xaml
             navigationDrawerList.ItemsSource = menuList;
 
@@ -41,6 +44,16 @@ namespace GoBuhat
             Detail = new NavigationPage(new LentaView(Username, Id));
 
             username_master_lbl.Text = Username + "\n" + "id: " + Id;
+        }
+
+
+        // It is just a testing function, delete it in future
+        private void AddCategories()
+        {
+            foreach (Category category in (Category[])Enum.GetValues(typeof(Category)))
+            {
+                menuList.Add(new MasterPageItem() { Title = category.ToString(), Icon = "allevents.png", TargetType = typeof(LentaView) });
+            }
         }
 
         private void OnMenuItemSelected(object sender, SelectedItemChangedEventArgs e)

@@ -66,6 +66,8 @@
                         BackgroundColor="DarkBlue" 
                         Opacity="0.7" 
                         VerticalOptions="FillAndExpand" />
+
+                    <ScrollView>
                     
                     <ListView 
                         x:Name="navigationDrawerList"
@@ -107,20 +109,15 @@
                                                 HorizontalOptions="FillAndExpand"
                                                 TextColor="Black"/>
                                         </StackLayout>
-
-                                        <!--<BoxView    
-                                            WidthRequest="70"
-                                            Grid.Row="1"
-                                            BackgroundColor="#999" 
-                                            HeightRequest="1" />-->
-                                    <!--</Grid>-->
-                                </ViewCell>
+                                    </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
 
+                    </ScrollView>
 
-                <Button 
+
+                    <Button 
                     Text="Log OUT"
                     x:Name="log_out_btn"
                     Clicked="log_out_btn_Clicked"

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             x:Class="GoBuhat.PopUp.ShowAllUsersOfEvent">
+
+    <StackLayout
+        Margin="5"
+        Spacing="24"
+        BackgroundColor="White"
+        HorizontalOptions="Fill"
+        VerticalOptions="Center" >
+
+        <Label
+                    Margin="5, 5, 0, 3"
+                    Text="Users who liked this event:"
+                    FontSize="Large" />
+
+        <ScrollView>
+
+            <StackLayout
+                BackgroundColor="LightGray"
+                x:Name="UsersList" >
+
+            </StackLayout>
+
+        </ScrollView>
+
+    </StackLayout>
+    
+</pages:PopupPage>

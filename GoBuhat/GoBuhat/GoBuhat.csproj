@@ -21,6 +21,12 @@
     <Compile Update="MasterDetailPageMenuItem.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="PopUp\ShowAllUsersOfEvent.xaml.cs">
+      <DependentUpon>ShowAllUsersOfEvent.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\UserView.xaml.cs">
+      <DependentUpon>UserView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="View\LentaView.xaml.cs">
       <DependentUpon>LentaView.xaml</DependentUpon>
     </Compile>

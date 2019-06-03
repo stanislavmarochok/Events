@@ -6,6 +6,7 @@
     <ContentView.Content>
 
         <StackLayout 
+            Spacing="0"
             BackgroundColor="White" 
             HorizontalOptions="FillAndExpand"
             VerticalOptions="CenterAndExpand" 
@@ -63,12 +64,6 @@
                                 VerticalTextAlignment="Start"
                                 FontAttributes="Bold" />
 
-                            <!--<Label 
-                                Grid.Row="2"
-                                Text="{Binding EventAuthorId, StringFormat='Event Author Id: {0:N}'}"
-                                VerticalTextAlignment="Start"
-                                FontAttributes="Bold" />-->
-
                         </Grid>
 
                     </StackLayout>
@@ -100,7 +95,6 @@
 
             <Grid
                 HeightRequest="30"
-                Padding="10"
                 VerticalOptions="Center" >
 
                 <Grid.ColumnDefinitions>
@@ -137,6 +131,11 @@
                 </Image>
 
             </Grid>
+
+            <StackLayout
+                x:Name="UsersList" >
+
+            </StackLayout>
 
         </StackLayout>
         

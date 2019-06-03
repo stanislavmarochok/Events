@@ -1,6 +1,8 @@
 ﻿using GoBuhat.Common;
 using GoBuhat.Pages;
+using GoBuhat.PopUp;
 using GoBuhat.Utils;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -123,6 +125,11 @@ namespace GoBuhat.Controls
             }
         }
 
+        byte[] result;
+        List<UserView> users;
+
+        Label noUsers;
+
         public EventView (
             string author_name, 
             string author_id, 
@@ -144,6 +151,13 @@ namespace GoBuhat.Controls
             EventPublishDatetime = publish_datetime;
 
             JoinStatus = (join_status.Equals("true")) ? true : false;
+
+            users = new List<UserView>();
+
+            noUsers = new Label()
+            {
+                Text = "Noone likes this event now :("
+            };
 
             BindingContext = this;
         }
@@ -210,12 +224,107 @@ namespace GoBuhat.Controls
 
         private void Btn_showAll_Clicked(object sender, EventArgs e)
         {
+            ShowAllUsersWhoLiked();
+        }
 
+        private void ShowAllUsersWhoLiked()
+        {
+
+            if (UsersList.Children.Count != 0)
+            {
+                foreach (var item in UsersList.Children.ToList())
+                    UsersList.Children.Remove(item);
+
+                foreach (var item in users.ToList())
+                    users.Remove(item);
+
+                SetColor(false);
+
+                return;
+            }
+
+            SetColor(true);
+            AddUsers();
+        }
+
+        private void SetColor(bool active)
+        {
+            if (active)
+            {
+                btn_showAll.BackgroundColor = Color.Aqua;
+                UsersList.BackgroundColor = Color.Aqua;
+            }else
+            {
+                btn_showAll.BackgroundColor = Color.White;
+                UsersList.BackgroundColor = Color.White;
+            }
+        }
+
+        private void AddUsers()
+        {
+            // TODO: get users who liked this post
+
+            SendGetUsersToPHP();
+        }
+
+        private void SendGetUsersToPHP()
+        {
+            WebClient client = new WebClient();
+            Uri uri = new Uri("https://adwatcherapplication.000webhostapp.com/get_users_for_event.php");
+
+            NameValueCollection parameters = new NameValueCollection();
+
+            parameters.Add("event_id", EventID);
+
+            new Thread(() =>
+            {
+                Thread.CurrentThread.IsBackground = true;
+
+                result = client.UploadValues(uri, parameters);
+
+                string content = CommonUIHelper.ConvertResult(result);
+
+                while (!string.IsNullOrEmpty(content))
+                {
+                    int newLine = content.IndexOf('\n');
+                    string user_name, user_id;
+
+                    string line = content.Substring(0, newLine);
+
+                    user_name = line.Substring(0, line.IndexOf(", User Id:"));
+                    line = line.Remove(0, line.IndexOf(", User Id:") + 2);
+
+                    user_id = line;
+
+                    user_name = user_name.Remove(0, 11);
+                    user_id = user_id.Remove(0, 9);
+
+                    users.Add(new UserView(user_id, user_name));
+
+                    content = content.Remove(0, newLine + 1);
+                }
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    if (users.Count == 0)
+                    {
+                        UsersList.Children.Add(noUsers);
+
+                        return;
+                    }
+
+                    foreach (var user in users)
+                    {
+                        UsersList.Children.Add(user);
+                    }
+                });
+
+            }).Start();
         }
 
         private async void OnEventHeaderTapped(object sender, EventArgs e)
         {
-            //Application.Current.MainPage = new NavigationPage(new Profile("TEST_NAME", EventAuthorId));
+            //Application.Current.MainPage = new NavigationPage(new ProfileView(EventAuthorName, EventAuthorId));
 
             await Navigation.PushAsync(new ProfileView(EventAuthorName, EventAuthorId));
         }

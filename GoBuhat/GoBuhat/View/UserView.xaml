@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvvm="clr-namespace:GoBuhat.Controls"
+             x:Class="GoBuhat.Controls.UserView">
+    <ContentView.Content>
+
+        <StackLayout
+            Margin="0, 0, 0, 0.2"
+            HorizontalOptions="Fill"
+            Orientation="Horizontal">
+
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer
+                                Tapped="OnEventHeaderTapped"
+                                NumberOfTapsRequired="1" />
+            </StackLayout.GestureRecognizers>
+
+            <Image 
+                            Source="profile.png" 
+                            Aspect="AspectFill" 
+                            Margin="40, 10, 0, 10"
+                            WidthRequest="40" 
+                            HeightRequest="40" />
+
+            <Grid
+                            HeightRequest="40"
+                            Margin="10, 0, 0, 0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition 
+                                    Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label 
+                                Grid.Row="0"
+                                Text="{Binding UserName}"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Start"
+                                VerticalTextAlignment="Center"
+                                TextColor="Black" 
+                                FontSize="Medium" />
+
+            </Grid>
+
+        </StackLayout>
+
+    </ContentView.Content>
+</ContentView>
